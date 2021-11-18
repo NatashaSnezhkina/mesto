@@ -7,9 +7,13 @@
   color: #FFFFFF;
   margin: 22px 0 0 0;
   padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 300px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 710px) {
   .profile__title {
     text-align: center;
     font-size: 27px;

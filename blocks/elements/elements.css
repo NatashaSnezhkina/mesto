@@ -8,11 +8,17 @@
   row-gap: 20px;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 900px) {
   .elements {
     grid-template-columns: repeat(2, min-content);
     grid-template-rows: repeat(3, min-content);
-    justify-content: space-around;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .elements {
+    margin-top: 36px;
   }
 }
 
@@ -20,12 +26,6 @@
   .elements {
     grid-template-columns: min-content;
     grid-template-rows: repeat(6, min-content);
-    justify-content: space-around;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .elements {
-    margin-top: 36px;
+    justify-content: center;
   }
 }
