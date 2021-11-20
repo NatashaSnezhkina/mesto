@@ -8,7 +8,7 @@
   margin: 0;
   border: none;
   background-image: url(../../images/CloseIcon.png);
-  background-color: #11ffee00;
+  background-color: rgba(0, 0, 0, 0);
   background-size: contain;
   cursor: pointer;
 }
@@ -24,9 +24,9 @@
   }
 }
 
-@media screen and (max-width: 450px){
-.close-button {
-  width: 20px;
-  height: 20px;
-}
+@media screen and (max-width: 450px) {
+  .close-button {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -8,14 +8,14 @@
   background-size: 10px 10px;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #11ffee00;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .edit-button:hover {
   opacity: 0.6;
 }
 
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 720px) {
   .edit-button {
     width: 18px;
     height: 18px;

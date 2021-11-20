@@ -1,5 +1,5 @@
 .profile__title {
-  font-family: Inter;
+  font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 42px;
@@ -13,11 +13,17 @@
   max-width: 300px;
 }
 
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 720px) {
   .profile__title {
     text-align: center;
     font-size: 27px;
     line-height: 33px;
     margin-top: 26px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile__title {
+    max-width: 240px;
   }
 }

@@ -5,8 +5,14 @@
   max-width: 336px;
 }
 
-@media screen and (max-width: 710px) {
+@media screen and (max-width: 720px) {
   .profile__info{
     margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile__info{
+    max-width: 300px;
   }
 }
