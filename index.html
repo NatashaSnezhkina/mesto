@@ -1,90 +1,88 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="./pages/index.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
-</head>
+  <body class="root">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="логотип" />
+    </header>
+    <main>
+      <section class="profile">
+        <img class="profile__avatar" src="./images/Avatar.jpg" alt="аватар" />
+        <div class="profile__info">
+          <div class="profile__main-info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="edit-button" type="button" aria-label="редактировать"></button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="add-button" type="button" aria-label="добавить"></button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img class="element__photo" src="./images/Karachaevsk.jpg" alt="Карачаевск" />
+          <div class="element__info">
+            <h2 class="element__title">Карачаево-Черкесия</h2>
+            <button class="element__like" type="button" aria-label="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__photo" src="./images/Altai.jpg" alt="Алтай" />
+          <div class="element__info">
+            <h2 class="element__title">Алтай</h2>
+            <button class="element__like" type="button" aria-label="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__photo" src="./images/Dombay.jpg" alt="Домбай" />
+          <div class="element__info">
+            <h2 class="element__title">Домбай</h2>
+            <button class="element__like" type="button" aria-label="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__photo" src="./images/Elbrus.jpg" alt="Эльбрус" />
+          <div class="element__info">
+            <h2 class="element__title">Эльбрус</h2>
+            <button class="element__like" type="button" aria-label="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__photo" src="./images/Kiji.jpg" alt="Кижи" />
+          <div class="element__info">
+            <h2 class="element__title">Кижи</h2>
+            <button class="element__like" type="button" aria-label="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__photo" src="./images/MurmanskOblast.jpg" alt="Мурманская область" />
+          <div class="element__info">
+            <h2 class="element__title">Мурманская область</h2>
+            <button class="element__like" type="button" aria-label="лайк"></button>
+          </div>
+        </div>
+      </section>
 
-<body class="root">
-  <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="логотип">
-  </header>
-  <main>
-    <section class="profile">
-      <img class="profile__avatar" src="./images/Avatar.jpg" alt="аватар">
-      <div class="profile__info">
-        <div class="profile__main-info">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="edit-button" type="button" aria-label="редактировать"></button>
-        </div>
-        <p class="profile__subtitle">Исследователь океана</p>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+      </footer>
+    </main>
+    <div class="popup">
+      <div class="popup__content">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="form" name="form">
+          <input class="field field_type_name" type="text" name="field_type_name" placeholder="Имя" />
+          <input class="field field_type_description" type="text" name="field_type_description" placeholder="Описание" />
+          <button type="submit" class="submit-button">Сохранить</button>
+        </form>
+        <button class="close-button" type="button" aria-label="закрыть"></button>
       </div>
-      <button class="add-button" type="button"></button>
-    </section>
-    <section class="elements">
-      <div class="element">
-        <img class="element__photo" src="./images/Karachaevsk.jpg" alt="Карачаевск">
-        <div class="element__info">
-          <h2 class="element__title">Карачаево-Черкесия</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__photo" src="./images/Altai.jpg" alt="Алтай">
-        <div class="element__info">
-          <h2 class="element__title">Алтай</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__photo" src="./images/Dombay.jpg" alt="Домбай">
-        <div class="element__info">
-          <h2 class="element__title">Домбай</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__photo" src="./images/Elbrus.jpg" alt="Эльбрус">
-        <div class="element__info">
-          <h2 class="element__title">Эльбрус</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__photo" src="./images/Kiji.jpg" alt="Кижи">
-        <div class="element__info">
-          <h2 class="element__title">Кижи</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__photo" src="./images/MurmanskOblast.jpg" alt="Мурманская область">
-        <div class="element__info">
-          <h2 class="element__title">Мурманская область</h2>
-          <button class="element__like" type="button"></button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
-    </footer>
-  </main>
-  <div class="popup">
-    <div class="popup__content">
-      <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="form" name="form">
-        <input class="field field_type_name" type="text" name="field_type_name" placeholder="Имя">
-        <input class="field field_type_description" type="text" name="field_type_description" placeholder="Описание">
-        <button type="submit" class="submit-button">Сохранить</button>
-      </form>
-      <button class="close-button" type="button"></button>
     </div>
-  </div>
-  <script src="./script/index.js"></script>
-</body>
-
+    <script src="./script/index.js"></script>
+  </body>
 </html>

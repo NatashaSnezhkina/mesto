@@ -3,13 +3,13 @@
   height: 50px;
   margin-top: 35px;
   padding: 0;
-  background-image: url(../../images/Add\ Button.svg);
+  background-image: url(../../images/AddButton.svg);
   background-size: 22px 22px;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #11ffee00;
   border-radius: 2px;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #fff;
   cursor: pointer;
 }
 
