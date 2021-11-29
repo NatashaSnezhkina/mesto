@@ -12,6 +12,7 @@ const linkInput = document.querySelector('.field_type_link');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const submitButton = document.querySelector('.submit-button');
+const submitButtonAdd = document.querySelector('.submit-button_add');
 const elementsContainer = document.querySelector('.elements');
 const templateEl = document.querySelector('.element-template');
 
@@ -74,10 +75,32 @@ function getCard(item) {
   const photoCard = newCard.querySelector('.element__photo');
   photoCard.src = item.link;
 
+  newCard.querySelector('.element__like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('element__like_active');
+  });
+
+  const removeButton = newCard.querySelector('.element__basket');
+  removeButton.addEventListener('click', handleDelete);
+
   return newCard;
 }
 
-render();
+function handleAdd() {
+  const inputText = titleInput.value;
+  const inputImage = linkInput.value;
+
+  const card = getCard({name: inputText, link: inputImage});
+  elementsContainer.prepend(card);
+
+  titleInput.value = '';
+  linkInput.value = '';
+}
+
+function handleDelete(event) {
+  const targetEl = event.target;
+  const card = targetEl.closest('.element');
+  card.remove();
+}
 
 
 addButton.addEventListener('click', () => {open(popupAdd);});
@@ -86,3 +109,7 @@ closeButtonPopupEdit.addEventListener('click', () => {close(popupEdit);});
 closeButtonPopupAdd.addEventListener('click', () => {close(popupAdd);});
 
 formElement.addEventListener('submit', formSubmitHandler);
+submitButtonAdd.addEventListener('click', handleAdd);
+
+
+render();
