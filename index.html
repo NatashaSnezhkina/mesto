@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
+    <script src="./script/index.js" defer></script>
   </head>
 
   <body class="root">
@@ -24,7 +25,7 @@
         <button class="add-button" type="button" aria-label="добавить"></button>
       </section>
       <section class="elements">
-        <div class="element">
+        <!--<div class="element">
           <img class="element__photo" src="./images/Karachaevsk.jpg" alt="Карачаевск" />
           <div class="element__info">
             <h2 class="element__title">Карачаево-Черкесия</h2>
@@ -65,14 +66,15 @@
             <h2 class="element__title">Мурманская область</h2>
             <button class="element__like" type="button" aria-label="лайк"></button>
           </div>
-        </div>
+        </div>-->
       </section>
 
       <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
     </main>
-    <div class="popup">
+    <!--редактирование профиля-->
+    <div class="popup popup-edit">
       <div class="popup__content">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="form" name="form">
@@ -80,9 +82,31 @@
           <input class="field field_type_description" type="text" name="field_type_description" placeholder="Описание" />
           <button type="submit" class="submit-button">Сохранить</button>
         </form>
-        <button class="close-button" type="button" aria-label="закрыть"></button>
+        <button class="close-button close-button_popup_edit" type="button" aria-label="закрыть"></button>
       </div>
     </div>
-    <script src="./script/index.js"></script>
+<!--добавление места-->
+    <div class="popup popup-add">
+      <div class="popup__content">
+        <h3 class="popup__title">Новое место</h3>
+        <form class="form" name="form">
+          <input class="field field_type_title" type="text" name="field_type_title" placeholder="Название" />
+          <input class="field field_type_description" type="text" name="field_type_link" placeholder="Ссылка на картинку" />
+          <button type="submit" class="submit-button submit-button_add">Создать</button>
+        </form>
+        <button class="close-button close-button_popup_add" type="button" aria-label="закрыть"></button>
+      </div>
+    </div>
+
+    <template class="element-template">
+      <div class="element">
+        <img class="element__photo" src="" alt="картинка" />
+        <div class="element__info">
+          <h2 class="element__title"></h2>
+          <button class="element__like" type="button" aria-label="лайк"></button>
+        </div>
+      </div>
+    </template>
+
   </body>
 </html>

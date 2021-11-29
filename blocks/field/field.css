@@ -11,3 +11,17 @@
   box-sizing: border-box;
 }
 
+.field:first-of-type {
+  margin-top: 47px; 
+}
+
+@media screen and (max-width: 450px) {
+  .field:first-of-type {
+    margin-top: 75px;
+  }
+}
+
+.field:last-of-type {
+  margin-top: 30px;
+}
+
