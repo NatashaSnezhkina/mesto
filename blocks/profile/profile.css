@@ -17,5 +17,6 @@
   .profile {
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content min-content;
+    padding: 0;
   }
 }

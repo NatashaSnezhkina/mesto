@@ -22,8 +22,12 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/_add/popup_add.css);
-@import url(../blocks/popup/_edit/popup_edit.css);
+@import url(../blocks/popup-add/popup-add.css);
+@import url(../blocks/popup-edit/popup-edit.css);
+@import url(../blocks/popup-picture/popup-picture.css);
+@import url(../blocks/popup-picture/__content/popup-picture__content.css);
+@import url(../blocks/popup-picture/__description/popup-picture__description.css);
+@import url(../blocks/popup-picture/__image/popup-picture__image.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__content/popup__content.css);
