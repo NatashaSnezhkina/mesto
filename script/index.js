@@ -121,12 +121,12 @@ function handleDelete(event) {
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
 });
-editButton.addEventListener('click', () => { 
+editButton.addEventListener('click', () => {
   openPopup(popupEdit);
   initiatePopup();
 });
 closeButtonPopupEdit.addEventListener('click', () => {
-closePopup(popupEdit);
+  closePopup(popupEdit);
 });
 closeButtonPopupAdd.addEventListener('click', () => {
   closePopup(popupAdd);
