@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mesto</title>
   <script src="./script/index.js" defer></script>
+  <script src="./script/validate.js" defer></script>
 </head>
 
 <body class="root">
@@ -34,30 +35,41 @@
   </main>
   <!--редактирование профиля-->
   <div class="popup popup-edit">
+    <div class="popup__overlay popup-edit__overlay"></div>
     <div class="popup__content">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="form form-edit" name="form">
-        <input class="field field_type_name" type="text" name="field_type_name" placeholder="Имя" />
-        <input class="field field_type_description" type="text" name="field_type_description" placeholder="Описание" />
-        <button type="submit" class="submit-button popup-edit__submit-button">Сохранить</button>
+      <form class="form form-edit popup__form" name="form">
+        <input class="field field_type_name popup__input" 
+        type="text" name="field_type_name" id="popup-edit__input_name" placeholder="Имя" required minlength="2" maxlength="40">
+        <span id="popup-edit__input_name-error"></span>
+        <input class="field field_type_description popup__input" type="text" id="popup-edit__input_description" name="field_type_description" 
+        placeholder="Описание" required minlength="2" maxlength="200">
+        <span id="popup-edit__input_description-error"></span>
+        <button type="submit" class="submit-button popup-edit__submit-button popup__button">Сохранить</button>
       </form>
       <button class="close-button popup-edit__close-button" type="button" aria-label="закрыть"></button>
     </div>
   </div>
   <!--добавление места-->
   <div class="popup popup-add">
+    <div class="popup__overlay popup-add__overlay"></div>
     <div class="popup__content">
       <h3 class="popup__title">Новое место</h3>
-      <form class="form form-add" name="form">
-        <input class="field field_type_title" type="text" name="field_type_title" placeholder="Название" />
-        <input class="field field_type_link" type="text" name="field_type_link" placeholder="Ссылка на картинку" />
-        <button type="submit" class="submit-button popup-add__submit-button">Создать</button>
+      <form class="form form-add popup__form" name="form">
+        <input class="field field_type_title popup__input" id="popup-add__input_title"
+        type="text" name="field_type_title" placeholder="Название" required minlength="2" maxlength="30">
+        <span id="popup-add__input_title-error"></span>
+        <input class="field field_type_link popup__input" id="popup-add__input_link"
+        type="url" name="field_type_link" placeholder="Ссылка на картинку" required>
+        <span id="popup-add__input_link-error"></span>
+        <button type="submit" class="submit-button popup-add__submit-button popup__button">Создать</button>
       </form>
       <button class="close-button popup-add__close-button" type="button" aria-label="закрыть"></button>
     </div>
   </div>
 
   <div class="popup popup-picture">
+    <div class="popup__overlay popup-picture__overlay"></div>
     <div class="popup-picture__content">
       <img class="popup-picture__image">
       <h3 class="popup-picture__description"></h3>

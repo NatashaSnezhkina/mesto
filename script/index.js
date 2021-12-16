@@ -16,6 +16,9 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const elementsContainer = document.querySelector('.elements');
 const templateEl = document.querySelector('.element-template');
+const overlayPopupAdd = document.querySelector('.popup-add__overlay');
+const overlayPopupPicture = document.querySelector('.popup-picture__overlay');
+const overlayPopupEdit = document.querySelector('.popup-edit__overlay');
 
 const initialCards = [
   {
@@ -117,9 +120,24 @@ function handleDelete(event) {
   card.remove();
 }
 
+function popupCloseEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+
+function disableButton() {
+  const disabledButton = document.querySelector('.popup-add__submit-button');
+  disabledButton.classList.add('popup__button_disabled');
+  disabledButton.disabled = true;
+}
+
+document.addEventListener('keydown', popupCloseEsc);
 
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
+  disableButton();
 });
 editButton.addEventListener('click', () => {
   openPopup(popupEdit);
@@ -132,6 +150,18 @@ closeButtonPopupAdd.addEventListener('click', () => {
   closePopup(popupAdd);
 });
 closeButtonPopupPicture.addEventListener('click', () => {
+  closePopup(popupPicture);
+});
+
+overlayPopupAdd.addEventListener('click', () => {
+  closePopup(popupAdd);
+});
+
+overlayPopupEdit.addEventListener('click', () => {
+  closePopup(popupEdit);
+});
+
+overlayPopupPicture.addEventListener('click', () => {
   closePopup(popupPicture);
 });
 
