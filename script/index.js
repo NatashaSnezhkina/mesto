@@ -16,9 +16,6 @@ const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const elementsContainer = document.querySelector('.elements');
 const templateEl = document.querySelector('.element-template');
-const overlayPopupAdd = document.querySelector('.popup-add__overlay');
-const overlayPopupPicture = document.querySelector('.popup-picture__overlay');
-const overlayPopupEdit = document.querySelector('.popup-edit__overlay');
 
 const initialCards = [
   {
@@ -49,6 +46,7 @@ const initialCards = [
 
 function openPopup(popupType) {
   popupType.classList.add('popup_opened');
+  document.addEventListener('keydown', popupCloseEsc);
 }
 
 function initiatePopup() {
@@ -65,6 +63,7 @@ function submitProfile(evt) {
 
 function closePopup(popupType) {
   popupType.classList.remove('popup_opened');
+  document.removeEventListener('keydown', popupCloseEsc);
 }
 
 function render() {
@@ -90,7 +89,7 @@ function getCard(item) {
   const removeButton = newCard.querySelector('.element__basket');
   removeButton.addEventListener('click', handleDelete);
 
-  newCard.querySelector('.element__photo').addEventListener('click', function () {
+  newCard.querySelector('.element__photo').addEventListener('click', () => {
     popupPicture.querySelector('.popup-picture__image').src = item.link;
     popupPicture.querySelector('.popup-picture__image').alt = item.name;
     popupPicture.querySelector('.popup-picture__description').textContent = item.name;
@@ -133,8 +132,6 @@ function disableButton() {
   disabledButton.disabled = true;
 }
 
-document.addEventListener('keydown', popupCloseEsc);
-
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
   disableButton();
@@ -143,26 +140,24 @@ editButton.addEventListener('click', () => {
   openPopup(popupEdit);
   initiatePopup();
 });
-closeButtonPopupEdit.addEventListener('click', () => {
-  closePopup(popupEdit);
-});
-closeButtonPopupAdd.addEventListener('click', () => {
-  closePopup(popupAdd);
-});
-closeButtonPopupPicture.addEventListener('click', () => {
-  closePopup(popupPicture);
+
+
+popupAdd.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup__overlay') || evt.target.classList.contains('close-button')) {
+    closePopup(popupAdd);
+  }
 });
 
-overlayPopupAdd.addEventListener('click', () => {
-  closePopup(popupAdd);
+popupEdit.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup__overlay') || evt.target.classList.contains('close-button')) {
+    closePopup(popupEdit);
+  }
 });
 
-overlayPopupEdit.addEventListener('click', () => {
-  closePopup(popupEdit);
-});
-
-overlayPopupPicture.addEventListener('click', () => {
-  closePopup(popupPicture);
+popupPicture.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup__overlay') || evt.target.classList.contains('close-button')) {
+    closePopup(popupPicture);
+  }
 });
 
 formEdit.addEventListener('submit', submitProfile);
