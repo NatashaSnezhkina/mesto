@@ -1,11 +1,11 @@
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 const editButton = document.querySelector('.edit-button');
 const addButton = document.querySelector('.add-button');
 const popupEdit = document.querySelector('.popup-edit');
 const popupAdd = document.querySelector('.popup-add');
 const popupPicture = document.querySelector('.popup-picture');
-const closeButtonPopupEdit = document.querySelector('.popup-edit__close-button');
-const closeButtonPopupAdd = document.querySelector('.popup-add__close-button');
-const closeButtonPopupPicture = document.querySelector('.popup-picture__close-button');
 const formEdit = document.querySelector('.form-edit');
 const formAdd = document.querySelector('.form-add');
 const nameInput = document.querySelector('.field_type_name');
@@ -15,7 +15,6 @@ const linkInput = document.querySelector('.field_type_link');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const elementsContainer = document.querySelector('.elements');
-const templateEl = document.querySelector('.element-template');
 
 const initialCards = [
   {
@@ -44,6 +43,28 @@ const initialCards = [
   }
 ];
 
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
+const editFormValidator = new FormValidator(validationConfig, formEdit);
+const cardFormValidator = new FormValidator(validationConfig, formAdd);
+
+editFormValidator.enableValidation();
+cardFormValidator.enableValidation();
+
+initialCards.forEach((item) => {
+  const card = new Card(item);
+  const cardElement = card.generateCard();
+  elementsContainer.append(cardElement);
+})
+
 function openPopup(popupType) {
   popupType.classList.add('popup_opened');
   document.addEventListener('keydown', popupCloseEsc);
@@ -66,57 +87,19 @@ function closePopup(popupType) {
   document.removeEventListener('keydown', popupCloseEsc);
 }
 
-function render() {
-  const html = initialCards.map((item, idx, arr) => {
-    return getCard(item);
-  });
-  elementsContainer.append(...html);
-}
-
-function getCard(item) {
-  const newCard = templateEl.content.cloneNode(true);
-  const headerCard = newCard.querySelector('.element__title');
-  headerCard.textContent = item.name;
-
-  const photoCard = newCard.querySelector('.element__photo');
-  photoCard.src = item.link;
-  photoCard.alt = item.name;
-
-  newCard.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-  });
-
-  const removeButton = newCard.querySelector('.element__basket');
-  removeButton.addEventListener('click', handleDelete);
-
-  newCard.querySelector('.element__photo').addEventListener('click', () => {
-    popupPicture.querySelector('.popup-picture__image').src = item.link;
-    popupPicture.querySelector('.popup-picture__image').alt = item.name;
-    popupPicture.querySelector('.popup-picture__description').textContent = item.name;
-    openPopup(popupPicture);
-  });
-
-  return newCard;
-}
-
 function handleAdd(evt) {
   evt.preventDefault();
   const inputText = titleInput.value;
   const inputImage = linkInput.value;
 
-  const card = getCard({ name: inputText, link: inputImage });
-  elementsContainer.prepend(card);
+  const card = new Card({ name: inputText, link: inputImage });
+  const cardElement = card.generateCard();
+  elementsContainer.prepend(cardElement);
 
   closePopup(popupAdd);
 
   titleInput.value = '';
   linkInput.value = '';
-}
-
-function handleDelete(event) {
-  const targetEl = event.target;
-  const card = targetEl.closest('.element');
-  card.remove();
 }
 
 function popupCloseEsc(evt) {
@@ -162,5 +145,3 @@ popupPicture.addEventListener('click', (evt) => {
 
 formEdit.addEventListener('submit', submitProfile);
 formAdd.addEventListener('submit', handleAdd);
-
-render();
