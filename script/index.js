@@ -118,7 +118,6 @@ function popupCloseEsc(evt) {
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
   cardFormValidator.resetValidation();
-  cardFormValidator._disableSubmitButton();
 });
 editButton.addEventListener('click', () => {
   openPopup(popupEdit);
