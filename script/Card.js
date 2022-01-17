@@ -1,12 +1,16 @@
+import {popupPicture, openPopup} from './index.js';
+
 class Card {
-  constructor(data) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor(item, templateSelector) {
+    this._name = item.name;
+    this._link = item.link;
+    this._templateSelector = templateSelector;
   }
 
   _getTemplate() {
+    console.log(this._templateSelector);
     const cardElement = document
-      .querySelector('.element-template')
+      .querySelector(this._templateSelector)
       .content
       .querySelector('.element')
       .cloneNode(true);

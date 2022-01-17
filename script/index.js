@@ -59,9 +59,14 @@ const cardFormValidator = new FormValidator(validationConfig, formAdd);
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
-initialCards.forEach((item) => {
-  const card = new Card(item);
+function createCard(item, selector) {
+  const card = new Card(item, selector);
   const cardElement = card.generateCard();
+  return cardElement;
+}
+
+initialCards.forEach((item) => {
+  const cardElement = createCard(item, '.element-template');
   elementsContainer.append(cardElement);
 })
 
@@ -89,11 +94,12 @@ function closePopup(popupType) {
 
 function handleAdd(evt) {
   evt.preventDefault();
-  const inputText = titleInput.value;
-  const inputImage = linkInput.value;
+  const input = {
+    name: titleInput.value,
+    link: linkInput.value
+  }
 
-  const card = new Card({ name: inputText, link: inputImage });
-  const cardElement = card.generateCard();
+  const cardElement = createCard(input, '.element-template');
   elementsContainer.prepend(cardElement);
 
   closePopup(popupAdd);
@@ -109,18 +115,14 @@ function popupCloseEsc(evt) {
   }
 }
 
-function disableButton() {
-  const disabledButton = document.querySelector('.popup-add__submit-button');
-  disabledButton.classList.add('popup__button_disabled');
-  disabledButton.disabled = true;
-}
-
 addButton.addEventListener('click', () => {
   openPopup(popupAdd);
-  disableButton();
+  cardFormValidator.resetValidation();
+  cardFormValidator._disableSubmitButton();
 });
 editButton.addEventListener('click', () => {
   openPopup(popupEdit);
+  editFormValidator.resetValidation();
   initiatePopup();
 });
 
@@ -145,3 +147,5 @@ popupPicture.addEventListener('click', (evt) => {
 
 formEdit.addEventListener('submit', submitProfile);
 formAdd.addEventListener('submit', handleAdd);
+
+export { popupPicture, openPopup };
