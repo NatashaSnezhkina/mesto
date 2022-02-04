@@ -1,5 +1,4 @@
 import './index.css';
-
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -59,12 +58,12 @@ function submitPopupEdit() {
     inputDescription: jobInput
   });
   popupEdit.close();
+  popupEdit._removeEventListeners();
 }
 //попап ДОБАВЛЕНИЕ
 const popupAdd = new PopupWithForm('.popup-add', submitPopupAdd);
 
-function submitPopupAdd(evt) {
-  evt.preventDefault();
+function submitPopupAdd() {
   const input = {
     name: titleInput.value,
     link: linkInput.value
@@ -78,11 +77,13 @@ function submitPopupAdd(evt) {
 
   titleInput.value = '';
   linkInput.value = '';
+  popupAdd._removeEventListeners();
 }
 
 addButton.addEventListener('click', () => {
   popupAdd.open();
   popupAdd.setEventListeners();
+  cardFormValidator._disableSubmitButton();
 });
 
 editButton.addEventListener('click', () => {
@@ -90,6 +91,7 @@ editButton.addEventListener('click', () => {
   const userInformation = user.getUserInfo();
   nameInput.value = userInformation.name;
   jobInput.value = userInformation.description;
+  popupEdit.setEventListeners();
 });
 
 formEdit.addEventListener('submit', submitPopupEdit);
