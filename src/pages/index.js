@@ -12,8 +12,6 @@ import {
   formAdd,
   nameInput,
   jobInput,
-  titleInput,
-  linkInput,
   userDescription,
   elementsContainer,
   initialCards,
@@ -31,68 +29,64 @@ cardFormValidator.enableValidation();
 const cardContainer = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.element-template', handleCardClick);
-    const cardElement = card.generateCard();
-    cardContainer.addItem(cardElement);
+    const card = createCard(item.name, item.link);
+    cardContainer.prependItem(card);
   }
 }, elementsContainer);
 
 cardContainer.renderItems();
 
-
 //создание попапа-картинки
 const popupPicture = new PopupWithImage('.popup-picture');
-
-function handleCardClick(name, link) {
-  popupPicture.open(name, link);
-  popupPicture.setEventListeners();
-}
 
 // попап РЕДАКТИРОВАНИЕ
 const popupEdit = new PopupWithForm('.popup-edit', submitPopupEdit);
 const user = new UserInfo(userDescription);
+const userInformation = user.getUserInfo();
 
-function submitPopupEdit() {
-  user.setUserInfo({
-    inputName: nameInput,
-    inputDescription: jobInput
-  });
-  popupEdit.close();
-  popupEdit._removeEventListeners();
-}
 //попап ДОБАВЛЕНИЕ
 const popupAdd = new PopupWithForm('.popup-add', submitPopupAdd);
 
-function submitPopupAdd() {
-  const input = {
-    name: titleInput.value,
-    link: linkInput.value
-  }
 
-  const card = new Card(input, '.element-template', handleCardClick);
-  const cardElement = card.generateCard();
-  elementsContainer.prepend(cardElement);
-
-  popupAdd.close();
-
-  titleInput.value = '';
-  linkInput.value = '';
-  popupAdd._removeEventListeners();
+function handleCardClick(name, link) {
+  popupPicture.open(name, link);
+  // popupPicture.setEventListeners();
 }
 
-addButton.addEventListener('click', () => {
-  popupAdd.open();
-  popupAdd.setEventListeners();
-  cardFormValidator._disableSubmitButton();
-});
+function createCard(name, link) {
+  const card = new Card(name, link, '.element-template', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
 
-editButton.addEventListener('click', () => {
+function openPopupEdit() {
   popupEdit.open();
-  const userInformation = user.getUserInfo();
   nameInput.value = userInformation.name;
   jobInput.value = userInformation.description;
-  popupEdit.setEventListeners();
+  // popupEdit.setEventListeners();
+}
+
+function openPopupAdd() {
+  popupAdd.open();
+  cardFormValidator.disableSubmitButton();
+}
+
+function submitPopupEdit(data) {
+  user.setUserInfo(data);
+  popupEdit.close();
+}
+
+function submitPopupAdd(data) {
+  const card = createCard(data.title, data.link);
+  cardContainer.prependItem(card);
+  popupAdd.close();
+}
+
+// слушатели
+addButton.addEventListener('click', () => {
+  openPopupAdd();
+});
+editButton.addEventListener('click', () => {
+  openPopupEdit();
 });
 
-formEdit.addEventListener('submit', submitPopupEdit);
-formAdd.addEventListener('submit', submitPopupAdd);

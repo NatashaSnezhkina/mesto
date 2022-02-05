@@ -7,18 +7,16 @@ class FormValidator {
     this._inactiveButtonClass = data.inactiveButtonClass;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
-    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
   }
 
   resetValidation() {
     this._toggleButtonError(this._submitButton);
-
-    this._inputList.forEach((inputElement) => {
+    this._inputs.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
   }
 
-  _disableSubmitButton() {
+  disableSubmitButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
@@ -48,7 +46,7 @@ class FormValidator {
 
   _toggleButtonError = (button) => {
     if (this._hasInvalidInput(this._inputs)) {
-      this._disableSubmitButton();
+      this.disableSubmitButton();
     } else {
       this._ableSubmitButton();
     }

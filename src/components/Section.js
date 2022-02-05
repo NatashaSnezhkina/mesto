@@ -21,4 +21,8 @@ export default class Section {
     });
   }
 
+  prependItem(card) {
+    this._container.prepend(card);
+  }
+
 }

@@ -4,8 +4,6 @@ export const formEdit = document.querySelector('.form-edit');
 export const formAdd = document.querySelector('.form-add');
 export const nameInput = document.querySelector('.field_type_name');
 export const jobInput = document.querySelector('.field_type_description');
-export const titleInput = document.querySelector('.field_type_title');
-export const linkInput = document.querySelector('.field_type_link');
 
 export const userDescription = {
   name: document.querySelector('.profile__title'),
