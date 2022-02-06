@@ -30,7 +30,7 @@ const cardContainer = new Section({
   items: initialCards,
   renderer: (item) => {
     const card = createCard(item.name, item.link);
-    cardContainer.prependItem(card);
+    cardContainer.addItem(card);
   }
 }, elementsContainer);
 
@@ -38,19 +38,21 @@ cardContainer.renderItems();
 
 //создание попапа-картинки
 const popupPicture = new PopupWithImage('.popup-picture');
+popupPicture.setEventListeners();
 
 // попап РЕДАКТИРОВАНИЕ
 const popupEdit = new PopupWithForm('.popup-edit', submitPopupEdit);
+popupEdit.setEventListeners();
+
 const user = new UserInfo(userDescription);
-const userInformation = user.getUserInfo();
 
 //попап ДОБАВЛЕНИЕ
 const popupAdd = new PopupWithForm('.popup-add', submitPopupAdd);
+popupAdd.setEventListeners();
 
 
 function handleCardClick(name, link) {
   popupPicture.open(name, link);
-  // popupPicture.setEventListeners();
 }
 
 function createCard(name, link) {
@@ -61,9 +63,9 @@ function createCard(name, link) {
 
 function openPopupEdit() {
   popupEdit.open();
+  const userInformation = user.getUserInfo();
   nameInput.value = userInformation.name;
   jobInput.value = userInformation.description;
-  // popupEdit.setEventListeners();
 }
 
 function openPopupAdd() {
