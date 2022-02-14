@@ -6,39 +6,11 @@ export const nameInput = document.querySelector('.field_type_name');
 export const jobInput = document.querySelector('.field_type_description');
 
 export const userDescription = {
-  name: document.querySelector('.profile__title'),
-  description: document.querySelector('.profile__subtitle')
+  name: document.querySelector('.profile__title').textContent,
+  about: document.querySelector('.profile__subtitle').textContent
 };
 
 export const elementsContainer = document.querySelector('.elements');
-
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 
 export const validationConfig = {
   formSelector: '.popup__form',
