@@ -15,7 +15,6 @@ export default class Card {
   }
 
   _getTemplate() {
-    console.log(this._templateSelector);
     const cardElement = document
       .querySelector(this._templateSelector)
       .content
@@ -44,9 +43,6 @@ export default class Card {
 
   _setEventListeners() {
     this._cardLike.addEventListener('click', () => {
-      // this._handleLike();
-      console.log(this);
-      console.log(this._element);
       if (this._cardLike.classList.contains('element__like_active')) {
         this._handleDeleteLike(this);
       }
@@ -63,10 +59,6 @@ export default class Card {
       this._handleCardClick(this._name, this._link);
     });
   }
-
-  // _handleLike() {
-  //   this._cardLike.classList.toggle('element__like_active');
-  // }
 
   _removeCardBasket() {
     if(this._ownerId !== this._userId) {

@@ -52,7 +52,6 @@ popupDelete.setEventListeners();
 const popupAvatar = new PopupWithForm('.popup-avatar', submitPopupAvatar)
 popupAvatar.setEventListeners();
 
-// console.log(userDescription.id);
 const user = new UserInfo(userDescription);
 console.log(user);
 
@@ -123,7 +122,6 @@ function submitPopupAdd(data) {
       const card = createCard(res, res.likes.length);
       cardContainer.prependItem(card);
       popupAdd.close();
-      console.log(user.getId());
     })
     .catch(err => {
       console.log(`Ошибка при добавлении карточки${err}`);
@@ -176,7 +174,6 @@ function handleDeleteLike(card) {
 
 api.getProfileInfo()
   .then((data) => {
-    console.log("User id:", data._id);
     userNew = new UserInfo(data);
     const userInfo = userNew.getUserInfo();
     document.querySelector('.profile__title').textContent = userInfo.name;
@@ -192,9 +189,6 @@ api.getProfileInfo()
 
 function openPopupEdit() {
   const userInfo = user.getUserInfo();
-  console.log(userInfo);
-  console.log(nameInput);
-  console.log(jobInput);
   nameInput.value = userInfo.name;
   jobInput.value = userInfo.about;
   popupEdit.open();
