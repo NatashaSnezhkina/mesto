@@ -204,8 +204,14 @@ function submitPopupEdit(data) {
   popupEdit.renderLoading(true);
   user.setUserInfo(data);
   api.sendProfileInfo(user.getUserInfo())
-    .then(() => {
+    .then((res) => {
       popupEdit.close();
+      userNew = new UserInfo(res);
+      const userInfo = userNew.getUserInfo();
+      document.querySelector('.profile__title').textContent = userInfo.name;
+      document.querySelector('.profile__avatar').alt = userInfo.name;
+      document.querySelector('.profile__avatar').src = userInfo.avatar;
+      document.querySelector('.profile__subtitle').textContent = userInfo.about;
     })
     .catch(err => {
       console.log(`Ошибка при редактировании профиля${err}`);
@@ -220,8 +226,11 @@ function submitPopupAvatar(data) {
   popupAvatar.renderLoading(true);
   user.setUserAvatar(data);
   api.sendAvatar(data)
-    .then(() => {
+    .then((res) => {
       popupAvatar.close();
+      userNew = new UserInfo(res);
+      const userInfo = userNew.getUserInfo();
+      document.querySelector('.profile__avatar').src = userInfo.avatar;
     })
     .catch(err => {
       console.log(`Ошибка при редактировании профиля${err}`);
