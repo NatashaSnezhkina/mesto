@@ -255,11 +255,11 @@ editButton.addEventListener('click', () => {
   openPopupEdit();
 });
 profileAvatar.addEventListener('mouseenter', () => {
-  profileOverlay.classList.remove('profile__avatar__overlay_closed')
+  profileOverlay.classList.remove('profile__avatar-overlay_closed')
 })
 
 profileAvatar.addEventListener('mouseleave', () => {
-  profileOverlay.classList.add('profile__avatar__overlay_closed')
+  profileOverlay.classList.add('profile__avatar-overlay_closed')
 })
 
 profileOverlay.addEventListener('click', () => {

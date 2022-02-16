@@ -7,7 +7,7 @@ export const nameInput = document.querySelector('.field_type_name');
 export const jobInput = document.querySelector('.field_type_description');
 export const linkInput = document.querySelector('.popup-avatar__input');
 export const profileAvatar = document.querySelector('.profile__avatar');
-export const profileOverlay = document.querySelector('.profile__avatar__overlay');
+export const profileOverlay = document.querySelector('.profile__avatar-overlay');
 
 export const userDescription = {
   name: document.querySelector('.profile__title').textContent,
